@@ -12,3 +12,12 @@ def execute():
     books = books[['ISBN', 'Book-Title', 'Book-Author', 'Year-Of-Publication', 'Publisher', 'Image-URL-L']]
     books.rename(columns={'Book-Title': 'title', 'Book-Author': 'author', 'Year-Of-Publication': 'year', 'Publisher': 'publisher', 'Image-URL-L': 'image_url'}, inplace=True)
     print(books.head())
+
+    # Load users dataset
+    users = pd.read_csv('resources/dataset/books/BX-Users.csv', sep=';', encoding='latin-1', on_bad_lines='warn')
+    print(users.shape)
+    print(users.columns)
+    print(users.info())
+    print(users.head())
+    users.rename(columns={"User-ID": "user_id", "Location": "location", "Age": "age"}, inplace=True)
+    print(users.head())
