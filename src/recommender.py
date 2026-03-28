@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from scipy.sparse import csr_matrix
 
 def execute():
     # Load books dataset
@@ -67,3 +68,7 @@ def execute():
     pivot_table.fillna(0, inplace=True)
     print(pivot_table.shape)
     print(pivot_table.head())
+
+    # https://www.sopact.com/use-case/csr-performance
+    books_sparse = csr_matrix(pivot_table.values)
+    print(books_sparse.shape)
