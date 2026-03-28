@@ -30,3 +30,8 @@ def execute():
     print(ratings.head())
     ratings.rename(columns={"User-ID": "user_id", "Book-Rating": "rating"}, inplace=True)
     print(ratings.head())
+
+    print(books.shape, users.shape, ratings.shape, sep='\n')
+
+    # Number if votes per user
+    print(ratings['user_id'].value_counts())
