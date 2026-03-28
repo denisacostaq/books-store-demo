@@ -50,3 +50,7 @@ def execute():
     number_ratings_per_book = books_with_rating.groupby('title')['rating'].count().reset_index()
     number_ratings_per_book.rename(columns={'rating': 'number_ratings'}, inplace=True)
     print(number_ratings_per_book.head())
+
+    final_ratings = books_with_rating.merge(number_ratings_per_book, on='title')
+    print(final_ratings.shape)
+    print(final_ratings.head())
