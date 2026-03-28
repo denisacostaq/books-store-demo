@@ -52,5 +52,7 @@ def execute():
     print(number_ratings_per_book.head())
 
     final_ratings = books_with_rating.merge(number_ratings_per_book, on='title')
+    # filter books with at least 50 ratings
+    final_ratings = final_ratings[final_ratings['number_ratings'] >= 50]
     print(final_ratings.shape)
     print(final_ratings.head())
