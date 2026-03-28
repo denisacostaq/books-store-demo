@@ -35,3 +35,14 @@ def execute():
 
     # Number if votes per user
     print(ratings['user_id'].value_counts())
+
+    # Let's store only users with more than 200 ratings
+    active_users = ratings['user_id'].value_counts() > 200
+    print(active_users)
+    indexes = active_users[active_users].index
+    # find all ratings for those active users
+    ratings = ratings[ratings['user_id'].isin(indexes)]
+    # merge books with ratings
+    books_with_rating = ratings.merge(books, on='ISBN')
+    print(books_with_rating.shape)
+    print(books_with_rating.head())
