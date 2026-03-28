@@ -76,3 +76,10 @@ def execute():
 
     model = NearestNeighbors(algorithm='brute')
     model.fit(books_sparse)
+
+    # Find the appropriate cluster for a given book, basically the nearest neighbors for that book
+    distance, suggestion = model.kneighbors(pivot_table.iloc[237, :].values.reshape(1, -1), n_neighbors=6)
+    print(distance)
+    print(suggestion)
+    for i in range(len(suggestion)):
+        print(pivot_table.index[suggestion[i]])
