@@ -56,3 +56,8 @@ def execute():
     final_ratings = final_ratings[final_ratings['number_ratings'] >= 50]
     print(final_ratings.shape)
     print(final_ratings.head())
+
+    # let's drop duplicates
+    final_ratings.drop_duplicates(subset=['user_id', 'title'], inplace=True)
+    print(final_ratings.shape)
+    print(final_ratings.head())
