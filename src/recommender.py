@@ -21,3 +21,12 @@ def execute():
     print(users.head())
     users.rename(columns={"User-ID": "user_id", "Location": "location", "Age": "age"}, inplace=True)
     print(users.head())
+
+    # Load ratings dataset
+    ratings = pd.read_csv('resources/dataset/books/BX-Book-Ratings.csv', sep=';', encoding='latin-1', on_bad_lines='warn')
+    print(ratings.shape)
+    print(ratings.columns)
+    print(ratings.info())
+    print(ratings.head())
+    ratings.rename(columns={"User-ID": "user_id", "Book-Rating": "rating"}, inplace=True)
+    print(ratings.head())
