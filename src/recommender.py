@@ -46,3 +46,7 @@ def execute():
     books_with_rating = ratings.merge(books, on='ISBN')
     print(books_with_rating.shape)
     print(books_with_rating.head())
+
+    number_ratings_per_book = books_with_rating.groupby('title')['rating'].count().reset_index()
+    number_ratings_per_book.rename(columns={'rating': 'number_ratings'}, inplace=True)
+    print(number_ratings_per_book.head())
