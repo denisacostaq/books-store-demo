@@ -61,3 +61,9 @@ def execute():
     final_ratings.drop_duplicates(subset=['user_id', 'title'], inplace=True)
     print(final_ratings.shape)
     print(final_ratings.head())
+
+    # Let's create a pivot table with users as columns, books as rows and ratings as values
+    pivot_table = final_ratings.pivot_table(index='title', columns='user_id', values='rating')
+    pivot_table.fillna(0, inplace=True)
+    print(pivot_table.shape)
+    print(pivot_table.head())
