@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from scipy.sparse import csr_matrix
+from sklearn.neighbors import NearestNeighbors
 
 def execute():
     # Load books dataset
@@ -72,3 +73,6 @@ def execute():
     # https://www.sopact.com/use-case/csr-performance
     books_sparse = csr_matrix(pivot_table.values)
     print(books_sparse.shape)
+
+    model = NearestNeighbors(algorithm='brute')
+    model.fit(books_sparse)
